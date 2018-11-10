@@ -90,4 +90,9 @@ public class Dimensions
     {
         this.height = height;
     }
+
+    public boolean equals(Dimensions d)
+    {
+        return d.getHeight()==getHeight()&&d.getWidth()==getWidth()&&d.getX()==getX()&&d.getY()==getY();
+    }
 }

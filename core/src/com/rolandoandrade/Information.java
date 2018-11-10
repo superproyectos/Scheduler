@@ -54,4 +54,9 @@ public class Information
                 return true;
         return false;
     }
+
+    public List<HourOfClass> getHourOfClasses()
+    {
+        return hourOfClasses;
+    }
 }

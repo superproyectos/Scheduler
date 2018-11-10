@@ -1,7 +1,9 @@
 package com.rolandoandrade.board;
 
+import com.rolandoandrade.HourOfClass;
 import com.rolandoandrade.color.Color;
 import com.rolandoandrade.Dimensions;
+import com.rolandoandrade.days.FabricOfDays;
 import com.rolandoandrade.fabrics.Fabric;
 import com.rolandoandrade.actions.Dynamic;
 import com.rolandoandrade.actions.Drawable;
@@ -10,6 +12,7 @@ import com.rolandoandrade.rectangles.Rectangle;
 public class Field implements Drawable,Dynamic
 {
     private Rectangle field;
+    private HourOfClass hourOfClass;
 
     public Field(int row, int column, int totalColumns, Fabric fabric)
     {
@@ -25,6 +28,7 @@ public class Field implements Drawable,Dynamic
         field=fabric.createNormalRectangle(x,y,width,height);
         field.setColor(row%2==0?Color.CYAN:Color.changeAlpha(Color.CYAN,0.8f));
         field.setColor(column%2==0?field.getColor():Color.changeAlpha(field.getColor(),field.getColor().a-0.1f));
+        hourOfClass=new HourOfClass(FabricOfDays.createDay(column-1),19-row,20-row);
     }
 
     @Override
@@ -52,5 +56,10 @@ public class Field implements Drawable,Dynamic
     public boolean contains(float x, float y)
     {
         return field.contains(x,y);
+    }
+
+    public HourOfClass getHourOfClass()
+    {
+        return hourOfClass;
     }
 }

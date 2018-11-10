@@ -11,10 +11,12 @@ public class RectangleLibGDX extends Rectangle
 {
     private ShapeRenderer renderer;
     private Actor rectangle;
+    private float height;
 
     public RectangleLibGDX(float x, float y, float width, float height, Draggable context)
     {
         super(x, y, width, height);
+        this.height=height;
         setUp(context);
     }
 
@@ -41,8 +43,8 @@ public class RectangleLibGDX extends Rectangle
             rectangle.setX(getWidth());
         else if (rectangle.getX()>Dimensions.getScreenWidth()-getWidth())
             rectangle.setX(Dimensions.getScreenWidth()-getWidth());
-        if(rectangle.getY()>Dimensions.getScreenHeight()-2*getHeight())
-            rectangle.setY(Dimensions.getScreenHeight()-2*getHeight());
+        if(rectangle.getY()>Dimensions.getScreenHeight()-2*height)
+            rectangle.setY(Dimensions.getScreenHeight()-2*height);
     }
 
     @Override
@@ -63,6 +65,7 @@ public class RectangleLibGDX extends Rectangle
     {
         Stage.putActorBack(rectangle);
         Stage.addToStage(rectangle);
+        setHeight(height);
     }
 
     @Override
@@ -89,4 +92,11 @@ public class RectangleLibGDX extends Rectangle
         validationsOfPosition();
         setPosition(rectangle.getX(),rectangle.getY());
     }
+
+    @Override
+    public void remove()
+    {
+        Stage.removeActor(rectangle);
+    }
+
 }

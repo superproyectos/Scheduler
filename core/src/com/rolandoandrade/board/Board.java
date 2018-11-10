@@ -1,6 +1,7 @@
 package com.rolandoandrade.board;
 
 import com.rolandoandrade.Dimensions;
+import com.rolandoandrade.HourOfClass;
 import com.rolandoandrade.text.labels.HourRangeLabel;
 import com.rolandoandrade.cards.ClassCard;
 import com.rolandoandrade.cards.TextInACard;
@@ -60,6 +61,19 @@ public abstract class Board implements Drawable, Scrollable
         return null;
     }
 
+    public Field getAFieldByHour(HourOfClass hourOfClass)
+    {
+        for (List<Field> fiel:fields)
+            for(Field f:fiel)
+                if(hourOfClass.isMe(f.getHourOfClass()))
+                    return f;
+        return null;
+    }
+
+    public void removeFromBoard(ClassCard card)
+    {
+        cards.remove(card);
+    }
     @Override
     public void draw()
     {

@@ -1,12 +1,13 @@
 package com.rolandoandrade.rectangles;
 
+import com.rolandoandrade.actions.Removable;
 import com.rolandoandrade.color.Color;
 import com.rolandoandrade.Dimensions;
 import com.rolandoandrade.actions.Dynamic;
 import com.rolandoandrade.actions.Draggable;
 import com.rolandoandrade.actions.Drawable;
 
-public abstract class Rectangle implements Drawable,Draggable,Dynamic
+public abstract class Rectangle implements Drawable,Draggable,Dynamic, Removable
 {
     private Dimensions dimensions;
 
@@ -66,7 +67,7 @@ public abstract class Rectangle implements Drawable,Draggable,Dynamic
         return dimensions.getHeight();
     }
 
-    public void setHeight(int height)
+    public void setHeight(float height)
     {
         if(height>=0)
             dimensions.setHeight(height);

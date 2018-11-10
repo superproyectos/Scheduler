@@ -4,6 +4,8 @@ import com.rolandoandrade.board.Board;
 import com.rolandoandrade.board.Field;
 import com.rolandoandrade.cards.ClassCard;
 
+import java.util.List;
+
 public class Validator
 {
     private Board board;
@@ -17,6 +19,28 @@ public class Validator
     {
         Field field = board.fieldWhereIsDropped(x,y);
         if(field!=null)
-            card.resize(field.getDimensions());
+        {
+            Dimensions d=field.getDimensions();
+            if(card.getInformation().isAtMyHour(field.getHourOfClass()))
+                card.putCard(field.getDimensions());
+            else
+                card.resize(d);
+        }
+    }
+
+    public Dimensions getPositionToPut(HourOfClass hourOfClasses)
+    {
+        Field f=board.getAFieldByHour(hourOfClasses);
+        return f.getDimensions();
+    }
+
+    public void addToBoard(ClassCard c)
+    {
+        board.addCardToBoard(c);
+    }
+
+    public void removeOfBoard(ClassCard c)
+    {
+        board.removeFromBoard(c);
     }
 }

@@ -26,8 +26,14 @@ public class Stage
     {
         if (stage!=null)
         {
-            stage.getActors().removeValue(actor,false);
+            removeActor(actor);
             stage.getActors().add(actor);
         }
+    }
+
+    public static void removeActor(Actor actor)
+    {
+        if (stage!=null)
+            stage.getActors().removeValue(actor,false);
     }
 }

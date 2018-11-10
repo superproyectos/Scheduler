@@ -21,6 +21,6 @@ public class FabricOfDays
             case 6:
                 return new Sunday();
         }
-        return null;
+        return new NullDay();
     }
 }

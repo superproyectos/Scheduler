@@ -4,6 +4,9 @@ import com.rolandoandrade.board.Board;
 import com.rolandoandrade.cards.ClassCard;
 import com.rolandoandrade.color.Color;
 import com.rolandoandrade.days.Monday;
+import com.rolandoandrade.days.Thursday;
+import com.rolandoandrade.days.Tuesday;
+import com.rolandoandrade.days.Wednesday;
 import com.rolandoandrade.fabrics.Fabric;
 import com.rolandoandrade.actions.Drawable;
 
@@ -27,7 +30,10 @@ public class Scheduler implements Drawable
         for(int i=0;i<colors.length;i++)
         {
             info=new Information(sub[i],"ab","123");
-            info.addClass(new HourOfClass(new Monday(),7,9));
+            info.addClass(new HourOfClass(new Monday(),8,10));
+            info.addClass(new HourOfClass(new Tuesday(),8,10));
+            info.addClass(new HourOfClass(new Wednesday(),8,9));
+            info.addClass(new HourOfClass(new Thursday(),8,11));
             c = new ClassCard(x, y, width, height,info, fabric);
             c.changeColor(colors[i]);
             board.addCardToBoard(c);

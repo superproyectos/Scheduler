@@ -17,7 +17,7 @@ public class HourOfClass
 
     public boolean isMe(HourOfClass hourOfClass)
     {
-        return start==hourOfClass.getStart()&&end==hourOfClass.getEnd()&&
+        return start==hourOfClass.getStart()&&
                 day.isMyDay(hourOfClass.getDay());
     }
 
